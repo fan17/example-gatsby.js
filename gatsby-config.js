@@ -50,6 +50,18 @@ module.exports = {
           return buildClientSchema(json.data);
         }
       }
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        fieldName: `dietlabs`,
+        typeName: `Dietlabs`,
+        createLink: () =>
+          createHttpLink({
+            uri: `https://apiv1.dieta.hpba.pl/graphql`,
+            fetch
+          })
+      }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
